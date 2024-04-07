@@ -1,0 +1,14 @@
+
+data_dir : ./image/
+img_dir : /
+img_ext :  .png
+device : cuda
+img_name : kodim01
+noise_level : 50
+noise_type : gauss
+max_epoch : 2000
+lr : 0.001
+step_size : 1500
+gamma : 0.52
+output_dir : ./output
+method: main

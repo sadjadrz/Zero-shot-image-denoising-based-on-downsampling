@@ -35,3 +35,17 @@ Some of the images.
 ### License
 
 This project is under the MIT license.
+
+### Citations
+
+If Zero shot image denoising based on downsampling helps your research or work, please consider citing it.
+```
+@InProceedings{qq,
+    author    = {x, y, z, r, t, v},
+    title     = {Zero shot image denoising based on downsampling},
+    booktitle = {IEEE/CVF Conference},
+    month     = {June},
+    year      = {2024},
+    pages     = {174-192}
+}
+```

@@ -21,3 +21,9 @@ git clone https://github.com/sadjadrz/Zero-shot-image-denoising-based-on-downsam
 pip install -r requirements.txt
 python setup.py develop --no_cuda_ext
 ```
+
+### Quick Start (Single Image Inference)
+---
+* ```python basicsr/demo.py -opt options/demo/demo.yml```
+  * modified your 
+

@@ -31,3 +31,7 @@ python setup.py develop --no_cuda_ext
 
 ---
 Some of the images.
+
+### License
+
+This project is under the MIT license.

@@ -43,10 +43,10 @@ If Zero shot image denoising based on downsampling helps your research or work, 
 @InProceedings{qq,
     author    = {x, y, z, r, t, v},
     title     = {Zero shot image denoising based on downsampling},
-    booktitle = {IEEE/CVF Conference},
-    month     = {June},
-    year      = {2024},
-    pages     = {174-192}
+    booktitle = {},
+    month     = {},
+    year      = {},
+    pages     = {}
 }
 ```
 

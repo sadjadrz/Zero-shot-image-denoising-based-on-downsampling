@@ -5,7 +5,49 @@ from Utils.img_downsampler import *
 def mse(gt: torch.Tensor, pred: torch.Tensor) -> torch.Tensor:
     loss = torch.nn.MSELoss()
     return loss(gt, pred)
+    
+def gaussian_kernel(size, sigma):
+    x = torch.arange(-size // 2 + 1., size // 2 + 1.)
+    x = x.repeat(size, 1)
+    y = x.t()
+    kernel = torch.exp(-0.5 * (x**2 + y**2) / sigma**2)
+    kernel = kernel / kernel.sum()
+    return kernel.unsqueeze(0).unsqueeze(0)
 
+class GaussionSmoothLayer(nn.Module):
+    def __init__(self, channel, kernel_size, sigma, dim=2):
+        super(GaussionSmoothLayer, self).__init__()
+        kernel_x = cv2.getGaussianKernel(kernel_size, sigma)
+        kernel_y = cv2.getGaussianKernel(kernel_size, sigma)
+        kernel = kernel_x * kernel_y.T
+        self.kernel_data = kernel
+        self.groups = channel
+        if dim == 1:
+            self.conv = nn.Conv1d(in_channels=channel, out_channels=channel, kernel_size=kernel_size,
+                                  groups=channel, bias=False)
+        elif dim == 2:
+            self.conv = nn.Conv2d(in_channels=channel, out_channels=channel, kernel_size=kernel_size,
+                                  groups=channel, bias=False)
+        elif dim == 3:
+            self.conv = nn.Conv3d(in_channels=channel, out_channels=channel, kernel_size=kernel_size,
+                                  groups=channel, bias=False)
+            raise RuntimeError('input dim is not supported !, please check it !')
+
+        self.conv.weight.requires_grad = False
+        for name, f in self.named_parameters():
+            f.data.copy_(torch.from_numpy(kernel))
+        self.pad = int((kernel_size - 1) / 2)
+
+    def forward(self, input):
+        intdata = input
+        intdata = F.pad(intdata, (self.pad, self.pad, self.pad, self.pad), mode='reflect')
+        output = self.conv(intdata)
+        return output
+
+# Initialize necessary components for BGM loss
+BGBlur_kernel = [3, 9, 15]
+BlurWeight = [0.01, 0.1, 1.0]
+BlurNet = [GaussionSmoothLayer(3, k_size, 25).cuda() for k_size in BGBlur_kernel]
 
 def loss_func(noisy_img , model, method_type='modified1'):
     if method_type == 'modified':
@@ -25,7 +67,22 @@ def loss_func(noisy_img , model, method_type='modified1'):
 
     loss_cons = 1 / 2 * (mse(pred1, denoised1) + mse(pred2, denoised2))
 
-    loss = loss_res + loss_cons
+    bgm_loss1 = 0
+    bgm_loss2 = 0
+    bgm_loss = 0
+
+    for index, weight in enumerate(BlurWeight):
+        out_b1 = BlurNet[index](noisy_img)
+        out_real_b1 = BlurNet[index](noisy1)
+        out_b2 = BlurNet[index](noisy_denoised)
+        out_real_b2 = BlurNet[index](noisy2)
+        grad_loss_b1 = mse(out_b1, out_real_b1)
+        grad_loss_b2 = mse(out_b2, out_real_b2)
+        bgm_loss1 += weight * grad_loss_b1
+        bgm_loss2 += weight * grad_loss_b2
+        bgm_loss += bgm_loss1 + bgm_loss2
+        
+    loss = loss_res + loss_cons + bgm_loss
 
     return loss
 

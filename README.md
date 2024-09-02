@@ -1,6 +1,6 @@
 !!!!!Under construction!!!!
 
-Zero shot image denoising based on downsampling
+Single Image Denoising via a New Lightweight Learning-Based Model
 ---
 #### Sadjad Rezvani, x, y, z
 #### Paper: [https://ieeexplore.ieee.org/iel8/6287639/6514899/10654252.pdf]

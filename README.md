@@ -6,7 +6,8 @@ Zero shot image denoising based on downsampling
 #### Paper: [https://ieeexplore.ieee.org/iel8/6287639/6514899/10654252.pdf]
 > In this paper, we specialize the new method in our corresponding community, apprehensive diamond, tasks. Specifically, we present a novel block: Half Instance Normalization Block
 ### Network Architecture
-img
+![main](https://github.com/user-attachments/assets/d5960eaf-ba06-4967-8e56-6bb2c48c8220)
+
 
 ### News
 

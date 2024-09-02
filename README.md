@@ -9,8 +9,6 @@ Single Image Denoising via a New Lightweight Learning-Based Model
 ![main](https://github.com/user-attachments/assets/d5960eaf-ba06-4967-8e56-6bb2c48c8220)
 
 
-### News
-
 ### Installation
 how to  install
 NOT excited reqirement.txt 
@@ -40,8 +38,6 @@ Some of the images.
 This project is under the MIT license.
 
 ### Citations
-
-If Zero shot image denoising based on downsampling helps your research or work, please consider citing it.
 ```
 @article{rezvani2024single,
   title={Single Image Denoising via a New Lightweight Learning-Based Model},

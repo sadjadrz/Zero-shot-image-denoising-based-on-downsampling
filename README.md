@@ -2,7 +2,7 @@
 
 Single Image Denoising via a New Lightweight Learning-Based Model
 ---
-#### Sadjad Rezvani, x, y, z
+#### SADJAD REZVANI1, FATEMEH SOLEYMANI SIAHKAR2, YASIN REZVANI3, ABDORREZAALAVI GHARAHBAGH4, AND VAHID ABOLGHASEMI
 #### Paper: [https://ieeexplore.ieee.org/iel8/6287639/6514899/10654252.pdf]
 > In this work, we tackle the complex challenge of image denoising, especially in scenarios where high-resolution images are corrupted by noise, making it difficult to restore their quality. Our proposed Fast Residual Denoising Framework (FRDF) leverages zero-shot learning principles, allowing it to effectively denoise images without the need for clean/noisy image pairs for training. With only 23K parameters, our model is lightweight and efficient, making it suitable for real-world applications ranging from medical imaging to surveillance, even with limited computational resources.
 ### Network Architecture

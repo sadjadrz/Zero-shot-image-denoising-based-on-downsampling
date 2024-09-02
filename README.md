@@ -28,7 +28,8 @@ git clone https://github.com/sadjadrz/Zero-shot-image-denoising-based-on-downsam
 ### Results
 
 ---
-Some of the images.
+![image](https://github.com/user-attachments/assets/87d37ce0-8452-4387-abdc-217b744993ce)
+
 
 ### License
 

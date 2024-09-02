@@ -3,7 +3,7 @@
 Zero shot image denoising based on downsampling
 ---
 #### Sadjad Rezvani, x, y, z
-#### Paper: https://google.com
+#### Paper: [https://google.com](https://ieeexplore.ieee.org/iel8/6287639/6514899/10654252.pdf)
 > In this paper, we specialize the new method in our corresponding community, apprehensive diamond, tasks. Specifically, we present a novel block: Half Instance Normalization Block
 ### Network Architecture
 img
@@ -42,13 +42,12 @@ This project is under the MIT license.
 
 If Zero shot image denoising based on downsampling helps your research or work, please consider citing it.
 ```
-@InProceedings{qq,
-    author    = {x, y, z, r, t, v},
-    title     = {Zero shot image denoising based on downsampling},
-    booktitle = {},
-    month     = {},
-    year      = {},
-    pages     = {}
+@article{rezvani2024single,
+  title={Single Image Denoising via a New Lightweight Learning-Based Model},
+  author={Rezvani, Sadjad and Siahkar, Fatemeh Soleymani and Rezvani, Yasin and Gharahbagh, Abdorreza Alavi and Abolghasemi, Vahid},
+  journal={IEEE Access},
+  year={2024},
+  publisher={IEEE}
 }
 ```
 
